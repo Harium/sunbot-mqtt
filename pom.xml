@@ -6,7 +6,7 @@
 
   <groupId>com.harium.suneidesis</groupId>
   <artifactId>sunbot-mqtt</artifactId>
-  <version>1.0.0</version>
+  <version>0.1.0</version>
   <packaging>jar</packaging>
   <name>Sunbot MQTT</name>
   <description>A plugin to turn your Suneidesis Chatbot into a MQTT Subscriber</description>
