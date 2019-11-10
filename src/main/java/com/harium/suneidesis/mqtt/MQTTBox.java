@@ -3,6 +3,7 @@ package com.harium.suneidesis.mqtt;
 import com.harium.suneidesis.instance.Instance;
 import com.harium.suneidesis.knowledge.linguistic.core.box.Chatbox;
 import com.harium.suneidesis.output.Output;
+import com.harium.suneidesis.output.OutputContext;
 import com.harium.suneidesis.output.TextOutput;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
@@ -18,6 +19,8 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
  * https://riptutorial.com/mqtt/example/28353/example-of-publish-subscriber-in-java
  */
 public class MQTTBox implements Chatbox, MqttCallback {
+
+  public static final String PARAM_CHANNEL = "CHANNEL";
 
   private Instance instance;
   private Output output = new TextOutput();
@@ -89,7 +92,11 @@ public class MQTTBox implements Chatbox, MqttCallback {
   @Override
   public void sendMessage(String channel, String message) {
     // Method to send message spontaneously
-    output.print(message);
+    OutputContext outputContext = new OutputContext();
+    outputContext.setInstance(instance);
+    outputContext.setSentence(message);
+    outputContext.getProperties().put(PARAM_CHANNEL, channel);
+    output.print(message, outputContext);
   }
 
   @Override
