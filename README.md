@@ -14,3 +14,13 @@ sudo firewall-cmd --permanent --add-port=8883/udp
 sudo systemctl enable mosquitto.service
 sudo systemctl start mosquitto.service
 ```
+
+## Maven
+```
+<dependency>
+    <groupId>com.harium.suneidesis</groupId>
+    <artifactId>sunbot-mqtt</artifactId>
+    <version>0.2.0</version>
+</dependency>
+```
+
